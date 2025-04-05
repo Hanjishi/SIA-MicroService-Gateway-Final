@@ -6,7 +6,7 @@ use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-use Illuminate\Auth\Access\AuthorizationException;  
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
@@ -65,7 +65,11 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             $model =    strtolower(class_basename ($exception->getModel()));
 
-            return $this->errorResponse("Does not exist any instance of {$model} with the given id", Response::HTTP_NOT_FOUND);
+            return response()->json([
+                'error' => "Does not exist any instance of {$model} with the given id",
+                'site' => $siteId,
+                'code' => Response::HTTP_NOT_FOUND
+            ], 404);
         }
 
         if ($exception instanceof ValidationException) {
@@ -81,14 +85,6 @@ class Handler extends ExceptionHandler
         if ($exception instanceof AuthenticationException) {
             return $this->errorResponse($exception->getMessage(), Response::HTTP_UNAUTHORIZED);
         }
-
-        if ($exception instanceof ClientException) {
-            $message = $exception->getResponse()->getBody();
-            $code = $exception->getCode();
-            
-            return $this->errorMessage($message,200);
-            }
-
         if (env('APP_DEBUG', false)) {
             return parent::render($request, $exception);
         }

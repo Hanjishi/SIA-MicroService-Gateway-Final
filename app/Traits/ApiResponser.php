@@ -7,27 +7,25 @@ use Illuminate\Http\Response;
 trait ApiResponser
 {
 
-    /**
-    * Build success response
-    * @param string|array $data
-    * @param int $code
-    * @return Illuminate\Http\JsonResponse
-    */
+    
     public function successResponse($data, $code = Response::HTTP_OK)
     {
-        return response($data, $code)->header('content-type', 'application/json');
+    return response ($data, $code)->header('Content-Type', 'application/json');
     }
-    /**
-    * Build error responses
-    * @param string|array $message
-    * @param int $code
-    * @return Illuminate\Http\JsonResponse
-    */
-    public function errorResponse($message, $code)
-
+    
+    public function validResponse($data, $code = Response::HTTP_OK)
     {
-        return response()->json(['error' => $message, 'code' => $code], $code);
+        return response()->json(['data' => $data], $code);
     }
+
+    public function errorResponse($message, $code)
+{
+    $response = is_array($message) ? $message : ['error' => $message];
+    $response['code'] = $code;
+
+    return response()->json($response, $code);
+}
+
 
     public function errorMessage($message, $code)
     {

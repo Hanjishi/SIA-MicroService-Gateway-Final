@@ -24,8 +24,7 @@ class User1Controller extends Controller
     public function __construct(User1Service $user1Service)
     {
         $this->user1Service = $user1Service;
-        // Debugging line
-        //error_log('Base URL: ' . $this->baseUri);
+        
     }
 
 
