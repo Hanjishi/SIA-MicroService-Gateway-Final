@@ -40,4 +40,4 @@ $router->group(['middleware' => 'client.credentials'], function () use ($router)
 $router->group(['middleware' => 'auth'], function () use ($router) {
     // Define your protected routes here
     $router->get('/users/me', 'UserController@me');
-});
+}); 
