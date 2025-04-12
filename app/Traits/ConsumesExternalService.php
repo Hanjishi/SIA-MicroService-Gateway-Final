@@ -14,7 +14,7 @@ trait ConsumesExternalService
 
 
         if (isset($this->secret)) {
-            $headers['Authorization'] = 'Bearer ' . $this->secret; // ✅ FIXED
+            $headers['Authorization'] = $this->secret;
         }
         
         $response = $client->request($method, $requestUrl, ['form_params' => $form_params, 'headers' => $headers]);
