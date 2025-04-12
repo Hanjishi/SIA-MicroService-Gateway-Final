@@ -9,6 +9,6 @@ return [
 
     'users2' => [
         'base_uri' => env('USERS2_SERVICE_BASE_URL'),
-        'secret' => env('USERS2_SERVICE_SECRET'),
+        'secret' => env('GATEWAY_SECRET'),
     ],
 ];
