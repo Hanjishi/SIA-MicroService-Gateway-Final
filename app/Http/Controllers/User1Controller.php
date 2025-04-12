@@ -26,12 +26,8 @@ class User1Controller extends Controller
         $this->user1Service = $user1Service;
         
     }
-
-
-    public function getUsers()
-    {
-        
-    }
+    
+    private $request;
 
     public function index()
     {
@@ -44,12 +40,12 @@ class User1Controller extends Controller
 
     public function show($id)
     {
-    return $this->successResponse($this->user1Service->obtainUser1($id));
+        return $this->successResponse($this->user1Service->obtainUser1($id));
     }
 
     public function update(Request $request,$id)
     {
-    return $this->successResponse($this->user1Service->editUser1($request->all(),$id));
+        return $this->successResponse($this->user1Service->editUser1($request->all(),$id));
     }
 
     public function delete($id)

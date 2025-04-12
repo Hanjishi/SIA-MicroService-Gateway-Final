@@ -35,17 +35,17 @@ class User1Service
 
     public function obtainUser1($id)
     {
-    return $this->performRequest('GET', "/users/{$id}");
+        return $this->performRequest('GET', "/users/{$id}");
     }
 
     public function editUser1($data, $id)
     {
-    return $this->performRequest('PUT', "/users/{$id}", $data);
+        return $this->performRequest('PUT', "/users/{$id}", $data);
     }
 
     public function deleteUser1($id)
     {
-    return $this->performRequest('DELETE', "/users/{$id}");
+        return $this->performRequest('DELETE', "/users/{$id}");
     }
 
 }

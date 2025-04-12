@@ -28,12 +28,6 @@ class User2Controller extends Controller
 
     private $request;
 
-
-    public function getUsers()
-    {
-        
-    }
-
     public function index()
     {
         return $this->successResponse($this->user2Service->obtainUsers2());
@@ -45,12 +39,12 @@ class User2Controller extends Controller
 
     public function show($id)
     {
-    return $this->successResponse($this->user2Service->obtainUser2($id));
+        return $this->successResponse($this->user2Service->obtainUser2($id));
     }
 
     public function update(Request $request,$id)
     {
-    return $this->successResponse($this->user2Service->editUser2($request->all(),$id));
+        return $this->successResponse($this->user2Service->editUser2($request->all(),$id));
     }
 
     public function delete($id)

@@ -29,12 +29,12 @@ class User2Service
 
     public function createUser2($data)
     {
-    return $this->performRequest('POST', '/users', $data);
+        return $this->performRequest('POST', '/users', $data);
     }
 
     public function obtainUser2($id)
     {
-    return $this->performRequest('GET', "/users/{$id}");
+        return $this->performRequest('GET', "/users/{$id}");
     }
 
     public function editUser2($data, $id)
